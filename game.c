@@ -50,3 +50,53 @@ int makemove(int n, char board[n][n], int row, int col, char player){
         return 0;
 }
 
+
+    //win check function
+int checkwin(int n, char board[n][n], char player){
+    int win;
+    int i,j;
+    //check rows 
+    for( i=0;i<n;i++){
+        win =1;
+         for (int j =0;j<n;j++){
+            if(board[i][j] != player)
+            win =0;
+        }
+        if(win == 1)
+        return 1;
+    }
+
+    //check coloms
+    for(j=0;j<n;j++){
+        win =1;
+        
+        for(int i=0;i<n;i++){
+            if(board[i][j] != player)
+                win =0;
+        }
+        if(win == 1)
+        return 1;
+    }
+    // check diagonal 1
+    win =1;
+    for(i =0;i<n;i++){
+        if(board[i][i] != player)
+             win = 0;
+    }
+    if(win == 1){
+        return 1;
+    }
+
+    //check diagonal 2
+    win =1;
+    for(i =0;i<n;i++){
+        if(board[i][n-i-1] != player)
+            win =0;
+    }
+    if(win == 1){
+        return 1;
+    }
+
+    //cheack No one is win 
+    return 0;
+} 
